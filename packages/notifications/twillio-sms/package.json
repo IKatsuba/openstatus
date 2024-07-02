@@ -1,0 +1,20 @@
+{
+  "name": "@openstatus/notification-twillio-sms",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@openstatus/db": "workspace:*",
+    "@t3-oss/env-core": "0.7.1",
+    "@types/validator": "13.11.6",
+    "validator": "13.11.0",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@openstatus/tsconfig": "workspace:*",
+    "@types/node": "20.8.0",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "next": "14.2.4",
+    "typescript": "5.5.2"
+  }
+}

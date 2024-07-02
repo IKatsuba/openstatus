@@ -1,0 +1,66 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+coverage
+
+# next.js
+.next/
+out/
+build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# turbo
+.turbo
+
+# vercel
+.vercel
+.venv
+# packages
+dist
+packages/emails/.react-email
+packages/db/database.db
+packages/db/openstatus.db
+packages/db/database.db-wal
+packages/db/database.db-shm
+packages/db/openstatus.db-shm
+packages/db/openstatus.db-wal
+openstatus.db-wal
+openstatus.db
+openstatus.db-shm
+
+packages/tinybird/.tinyb
+apps/web/tsconfig.tsbuildinfo
+openstatus-test.db
+openstatus-test.db-shm
+openstatus-test.db-wal
+
+#webstorm
+.idea
+
+.wrangler
+apps/web/.env.dev
+packages/db/.env.dev
+openstatus-dev.db-wal
+openstatus-dev.db-shm
+apps/ingest-worker/.production.vars
+apps/ingest-worker/.dev.vars

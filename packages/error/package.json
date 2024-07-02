@@ -1,0 +1,17 @@
+{
+  "name": "@openstatus/error",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {},
+  "dependencies": {
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@openstatus/tsconfig": "workspace:*",
+    "typescript": "5.5.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

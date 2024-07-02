@@ -1,0 +1,36 @@
+{
+  "name": "@openstatus/api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@openstatus/analytics": "workspace:*",
+    "@openstatus/assertions": "workspace:*",
+    "@openstatus/db": "workspace:*",
+    "@openstatus/emails": "workspace:*",
+    "@openstatus/error": "workspace:*",
+    "@openstatus/plans": "workspace:*",
+    "@openstatus/tinybird": "workspace:*",
+    "@t3-oss/env-core": "0.7.0",
+    "@trpc/client": "10.45.2",
+    "@trpc/server": "10.45.2",
+    "nanoid": "5.0.7",
+    "nanoid-dictionary": "5.0.0-beta.1",
+    "next": "14.2.4",
+    "random-word-slugs": "0.1.7",
+    "stripe": "13.8.0",
+    "superjson": "1.13.3",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@openstatus/tsconfig": "workspace:*",
+    "bun-types": "1.0.8",
+    "typescript": "5.5.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

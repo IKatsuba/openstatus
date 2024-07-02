@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "biome lint .",
+    "format": "pnpm biome format . --write && pnpm biome check . --apply-unsafe ",
+    "lint:turbo": "turbo run lint",
+    "dev:web": "turbo run dev --filter='./apps/web' --filter='./packages/db'",
+    "dx": "turbo run dx",
+    "tsc": "tsc",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.3",
+    "@turbo/gen": "1.13.3",
+    "@types/node": "20.8.0",
+    "knip": "^5.16.0",
+    "turbo": "1.13.3",
+    "typescript": "5.5.2"
+  },
+  "packageManager": "pnpm@9.1.4",
+  "name": "openstatus",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "packages/config/*",
+    "packages/notifications/*"
+  ]
+}
