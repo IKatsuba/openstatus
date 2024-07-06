@@ -9,10 +9,12 @@ import { incidentTable } from "@openstatus/db/src/schema/incidents/incident";
 import { Receiver } from "@upstash/qstash";
 
 import { env } from "./env";
+import { logger } from "hono/logger";
 
 const S3 = new S3Client({
   region: "auto",
   endpoint: env.R2_URL,
+  forcePathStyle: true,
   credentials: {
     accessKeyId: env.R2_ACCESS_KEY,
     secretAccessKey: env.R2_SECRET_KEY,
@@ -25,6 +27,8 @@ const receiver = new Receiver({
 });
 
 const app = new Hono();
+
+app.use(logger())
 
 app.get("/ping", (c) =>
   c.json({ ping: "pong", region: process.env.FLY_REGION }, 200),
@@ -47,10 +51,13 @@ app.post(
     //   return c.text("Unauthorized", 401);
     // }
 
-    const data = c.req.valid("json");
-    const isValid = receiver.verify({
+      const data = c.req.valid("json");
+    const isValid = await receiver.verify({
       signature: signature || "",
-      body: JSON.stringify(data),
+      body: await c.req.text(),
+  }).catch((error) => {
+        console.error(error);
+        return false;
     });
     if (!isValid) {
       console.error("Unauthorized");
