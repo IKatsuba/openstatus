@@ -22,6 +22,8 @@ services:
     environment:
       SR_TOKEN: test
       REDIS_URL: 'redis://redis:6379'
+    depends_on:
+      - redis
   ngrok:
     image: ngrok/ngrok:latest
     command: 'http localhost:8081'
@@ -48,6 +50,19 @@ services:
     environment:
       MINIO_ACCESS_KEY: minio
       MINIO_SECRET_KEY: minio123
+  screenshot-service:
+    build:
+      context: .
+      dockerfile: ./apps/screenshot-service/Dockerfile
+    ports:
+      - '8081:8081'
+    env_file:
+      - apps/screenshot-service/.env
+    depends_on:
+      - db
+      - s3
+      - create-bucket-and-user
+      - ngrok
 
 volumes:
   db_data:
