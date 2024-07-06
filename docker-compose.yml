@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  db:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    platform: linux/amd64
+    ports:
+      - "8080:8080"
+      - "5001:5001"
+    volumes:
+      - db_data:/var/lib/sqld
+  redis:
+    image: redis/redis-stack:edge
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+  serverless-redis:
+    ports:
+      - '8079:3000'
+    image: ghcr.io/ikatsuba/serverless-redis
+    environment:
+      SR_TOKEN: test
+      REDIS_URL: 'redis://redis:6379'
+
+volumes:
+  db_data:
+  redis_data:
