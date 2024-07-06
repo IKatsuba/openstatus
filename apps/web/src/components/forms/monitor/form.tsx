@@ -1,10 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { getLimit } from "@openstatus/plans";
 import { usePathname, useRouter } from "next/navigation";
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { getLimit } from "@openstatus/plans";
 
 import * as assertions from "@openstatus/assertions";
 import type {
@@ -140,7 +140,7 @@ export function MonitorForm({
         finally: () => {
           setPending(false);
         },
-      }
+      },
     );
   };
 
@@ -189,7 +189,7 @@ export function MonitorForm({
         JSON.stringify([
           ...(statusAssertions || []),
           ...(headerAssertions || []),
-        ])
+        ]),
       );
 
       const data = (await res.json()) as RegionChecker;
@@ -225,7 +225,7 @@ export function MonitorForm({
       if (error instanceof Error && error.name === "AbortError") {
         return {
           error: `Abort error: request takes more then ${formatDuration(
-            ABORT_TIMEOUT
+            ABORT_TIMEOUT,
           )}.`,
         };
       }

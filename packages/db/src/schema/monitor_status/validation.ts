@@ -9,7 +9,7 @@ export const selectMonitorStatusSchema = createSelectSchema(
   {
     status: monitorStatusSchema.default("active"),
     region: monitorRegionSchema.default("ams"),
-  }
+  },
 );
 
 export const insertMonitorStatusSchema = createInsertSchema(
@@ -17,7 +17,7 @@ export const insertMonitorStatusSchema = createInsertSchema(
   {
     status: monitorStatusSchema.default("active"),
     region: monitorRegionSchema.default("ams"),
-  }
+  },
 );
 
 // export type InsertMonitorStatus = z.infer<typeof insertMonitorStatusSchema>;

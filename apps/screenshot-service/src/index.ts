@@ -8,8 +8,8 @@ import { db, eq } from "@openstatus/db";
 import { incidentTable } from "@openstatus/db/src/schema/incidents/incident";
 import { Receiver } from "@upstash/qstash";
 
-import { env } from "./env";
 import { logger } from "hono/logger";
+import { env } from "./env";
 
 const S3 = new S3Client({
   region: "auto",
@@ -28,7 +28,7 @@ const receiver = new Receiver({
 
 const app = new Hono();
 
-app.use(logger())
+app.use(logger());
 
 app.get("/ping", (c) =>
   c.json({ ping: "pong", region: process.env.FLY_REGION }, 200),
@@ -51,14 +51,16 @@ app.post(
     //   return c.text("Unauthorized", 401);
     // }
 
-      const data = c.req.valid("json");
-    const isValid = await receiver.verify({
-      signature: signature || "",
-      body: await c.req.text(),
-  }).catch((error) => {
+    const data = c.req.valid("json");
+    const isValid = await receiver
+      .verify({
+        signature: signature || "",
+        body: await c.req.text(),
+      })
+      .catch((error) => {
         console.error(error);
         return false;
-    });
+      });
     if (!isValid) {
       console.error("Unauthorized");
       return c.text("Unauthorized", 401);

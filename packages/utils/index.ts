@@ -391,7 +391,7 @@ export const groupByContinent = Object.entries(flyRegionsDict).reduce<
     Oceania: [],
     Asia: [],
     Africa: [],
-  }
+  },
 );
 
 export const vercelRegions = [

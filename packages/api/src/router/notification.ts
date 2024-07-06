@@ -12,8 +12,8 @@ import { getLimit } from "@openstatus/plans";
 
 import { SchemaError } from "@openstatus/error";
 import { trackNewNotification } from "../analytics";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
 import { env } from "../env";
+import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 export const notificationRouter = createTRPCRouter({
   create: protectedProcedure
@@ -23,7 +23,7 @@ export const notificationRouter = createTRPCRouter({
 
       const notificationLimit = getLimit(
         opts.ctx.workspace.plan,
-        "notification-channels"
+        "notification-channels",
       );
 
       const notificationNumber = (
@@ -85,8 +85,8 @@ export const notificationRouter = createTRPCRouter({
         .where(
           and(
             eq(notification.id, opts.input.id),
-            eq(notification.workspaceId, opts.ctx.workspace.id)
-          )
+            eq(notification.workspaceId, opts.ctx.workspace.id),
+          ),
         )
         .returning()
         .get();
@@ -100,8 +100,8 @@ export const notificationRouter = createTRPCRouter({
         .where(
           and(
             eq(notification.id, opts.input.id),
-            eq(notification.id, opts.input.id)
-          )
+            eq(notification.id, opts.input.id),
+          ),
         )
         .run();
     }),
@@ -116,8 +116,8 @@ export const notificationRouter = createTRPCRouter({
           and(
             eq(notification.id, opts.input.id),
             eq(notification.id, opts.input.id),
-            eq(notification.workspaceId, opts.ctx.workspace.id)
-          )
+            eq(notification.workspaceId, opts.ctx.workspace.id),
+          ),
         )
         .get();
 
@@ -137,7 +137,7 @@ export const notificationRouter = createTRPCRouter({
   isNotificationLimitReached: protectedProcedure.query(async (opts) => {
     const notificationLimit = getLimit(
       opts.ctx.workspace.plan,
-      "notification-channels"
+      "notification-channels",
     );
     const notificationNumbers = (
       await opts.ctx.db.query.notification.findMany({

@@ -75,8 +75,8 @@ export function registerPostNotification(api: typeof notificationsApi) {
           and(
             inArray(monitor.id, monitors),
             eq(monitor.workspaceId, Number(workspaceId)),
-            isNull(monitor.deletedAt)
-          )
+            isNull(monitor.deletedAt),
+          ),
         )
         .all();
 

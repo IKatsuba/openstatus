@@ -36,7 +36,7 @@ import { getLimit } from "@openstatus/plans";
 interface Props {
   form: UseFormReturn<InsertMonitor>;
   pingEndpoint(
-    region?: MonitorFlyRegion
+    region?: MonitorFlyRegion,
   ): Promise<{ data?: RegionChecker; error?: string }>;
 }
 
@@ -142,7 +142,7 @@ export function RequestTestButton({ form, pingEndpoint }: Props) {
                 JSON.stringify([
                   ...(statusAssertions || []),
                   ...(headerAssertions || []),
-                ])
+                ]),
               )}
             />
           </div>
