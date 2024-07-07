@@ -25,6 +25,7 @@ export const env = createEnv({
     CLICKHOUSE_PASSWORD: z.string(),
     PLAIN_API_KEY: z.string().optional(),
     PAGERDUTY_APP_ID: z.string().optional(),
+    CHECKER_API_URL: z.string(),
   },
   client: {
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
@@ -59,6 +60,7 @@ export const env = createEnv({
     CLICKHOUSE_PASSWORD: process.env.CLICKHOUSE_PASSWORD,
     PLAIN_API_KEY: process.env.PLAIN_API_KEY,
     PAGERDUTY_APP_ID: process.env.PAGERDUTY_APP_ID,
+    CHECKER_API_URL: process.env.CHECKER_API_URL,
   },
   skipValidation: true,
 });

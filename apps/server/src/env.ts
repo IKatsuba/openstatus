@@ -16,6 +16,7 @@ export const env = createEnv({
     JITSU_HOST: z.string().optional(),
     SCREENSHOT_SERVICE_URL: z.string(),
     QSTASH_TOKEN: z.string(),
+    CHECKER_API_URL: z.string(),
   },
 
   /**
