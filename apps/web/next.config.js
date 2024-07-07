@@ -41,7 +41,7 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
 };
 
 // Injected content via Sentry wizard below

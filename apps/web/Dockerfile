@@ -12,6 +12,6 @@ EXPOSE 3000
 
 WORKDIR /app/apps/web
 
-ENV NODE_ENV production
+RUN echo $DATABASE_URL
 
 CMD ["pnpm", "start"]

@@ -8,7 +8,7 @@
     "push": "drizzle-kit push",
     "migrate": "bun src/migrate.mts",
     "studio": "drizzle-kit studio",
-    "env": "bun env.ts",
+    "env": "echo 0",
     "seed": "bun src/seed.mts"
   },
   "dependencies": {

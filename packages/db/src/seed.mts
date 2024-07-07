@@ -4,7 +4,7 @@ import { createClient } from "@libsql/client";
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/libsql";
 
-import { env } from "../env.mjs";
+import { env } from "../env";
 import {
   incidentTable,
   monitor,

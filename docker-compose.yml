@@ -63,6 +63,16 @@ services:
       - s3
       - create-bucket-and-user
       - ngrok
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+    ports:
+      - '3000:3000'
+    env_file:
+      - apps/web/.env
+    depends_on:
+      - db
   tinybird_push:
     build:
       context: .

@@ -2,7 +2,7 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 import "@openstatus/analytics/env";
-import "@openstatus/db/env.mjs";
+import "@openstatus/db/env";
 
 export const env = createEnv({
   server: {
@@ -26,6 +26,7 @@ export const env = createEnv({
     PLAIN_API_KEY: z.string().optional(),
     PAGERDUTY_APP_ID: z.string().optional(),
     CHECKER_API_URL: z.string(),
+    DATABASE_URL: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
@@ -61,6 +62,7 @@ export const env = createEnv({
     PLAIN_API_KEY: process.env.PLAIN_API_KEY,
     PAGERDUTY_APP_ID: process.env.PAGERDUTY_APP_ID,
     CHECKER_API_URL: process.env.CHECKER_API_URL,
+    DATABASE_URL: process.env.DATABASE_URL,
   },
   skipValidation: true,
 });

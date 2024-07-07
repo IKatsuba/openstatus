@@ -18,7 +18,11 @@ import {
   ogMetadata,
   twitterMetadata,
 } from "../shared-metadata";
-import {ExternalStatusArray, externalStatusArray, getClassname} from "./utils";
+import {
+  type ExternalStatusArray,
+  externalStatusArray,
+  getClassname,
+} from "./utils";
 
 export const revalidate = 600; // revalidate every 10 min
 
