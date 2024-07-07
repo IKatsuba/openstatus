@@ -63,6 +63,13 @@ services:
       - s3
       - create-bucket-and-user
       - ngrok
+  tinybird_push:
+    build:
+      context: .
+      dockerfile: ./packages/tinybird/Dockerfile
+    env_file:
+      - packages/tinybird/.env
+
 
 volumes:
   db_data:
