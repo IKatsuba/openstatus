@@ -18,7 +18,7 @@ import {
   ogMetadata,
   twitterMetadata,
 } from "../shared-metadata";
-import { externalStatusArray, getClassname } from "./utils";
+import {ExternalStatusArray, externalStatusArray, getClassname} from "./utils";
 
 export const revalidate = 600; // revalidate every 10 min
 
@@ -37,8 +37,9 @@ export const metadata: Metadata = {
 };
 
 const ExternalStatusPage = async () => {
-  const res = await fetch(env.EXTERNAL_API_URL);
-  const data = await res.json();
+  // const res = await fetch(env.EXTERNAL_API_URL);
+  // const data = await res.json();
+  const data: ExternalStatusArray = [];
   const externalStatus = externalStatusArray.parse(data);
   return (
     <MarketingLayout>
