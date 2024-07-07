@@ -21,7 +21,7 @@ type UpdateData struct {
 }
 
 func UpdateStatus(ctx context.Context, updateData UpdateData) {
-	url := "https://openstatus-api.fly.dev/updateStatus"
+	url := os.Getenv("SERVER_API_URL") + "/updateStatus"
 	basic := "Basic " + os.Getenv("CRON_SECRET")
 	payloadBuf := new(bytes.Buffer)
 	json.NewEncoder(payloadBuf).Encode(updateData)
