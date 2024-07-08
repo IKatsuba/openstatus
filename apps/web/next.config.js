@@ -1,7 +1,5 @@
 const { withContentlayer } = require("next-contentlayer");
 
-const isRailway = !!process.env.RAILWAY_PROJECT_NAME;
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,

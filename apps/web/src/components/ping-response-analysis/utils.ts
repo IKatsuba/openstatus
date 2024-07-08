@@ -1,6 +1,7 @@
 import { Redis } from "@upstash/redis";
 import { z } from "zod";
 
+import { env } from "@/env";
 import { flyRegions, monitorFlyRegionSchema } from "@openstatus/db/src/schema";
 import type { MonitorFlyRegion } from "@openstatus/db/src/schema";
 import { flyRegionsDict } from "@openstatus/utils";
@@ -121,7 +122,7 @@ export async function checkRegion(
   },
 ): Promise<RegionChecker> {
   //
-  const res = await fetch(`https://checker.openstatus.dev/ping/${region}`, {
+  const res = await fetch(`${env.CHECKER_API_URL}/ping/${region}`, {
     headers: {
       Authorization: `Basic ${process.env.CRON_SECRET}`,
       "Content-Type": "application/json",
