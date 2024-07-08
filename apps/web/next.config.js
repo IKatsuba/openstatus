@@ -1,7 +1,10 @@
 const { withContentlayer } = require("next-contentlayer");
 
+const isRailway = !!process.env.RAILWAY_PROJECT_NAME;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   reactStrictMode: true,
   swcMinify: true,
   transpilePackages: ["@openstatus/ui", "@openstatus/api"],

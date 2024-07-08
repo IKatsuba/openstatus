@@ -71,6 +71,8 @@ services:
       - '3000:3000'
     env_file:
       - apps/web/.env
+    environment:
+      DATABASE_URL: 'http://db:8080'
     depends_on:
       - db
   tinybird_push:

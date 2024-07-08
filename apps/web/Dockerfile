@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:20 as builder
 
 ARG RAILWAY_DOCKERFILE_PATH
 ARG TINY_BIRD_API_KEY
@@ -34,6 +34,7 @@ ARG AUTH_GITHUB_ID
 ARG AUTH_GITHUB_SECRET
 ARG NEXTAUTH_URL
 ARG NEXTAUTH_URL_INTERNAL
+ARG RAILWAY_PROJECT_NAME
 
 WORKDIR /app
 
@@ -43,9 +44,16 @@ RUN npm install -g pnpm
 RUN pnpm install &&\
     pnpm run build
 
+FROM node:20-alpine as runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY --from=builder /app/apps/web/public ./apps/web/public
+COPY --from=builder /app/apps/web/.next/standalone ./
+COPY --from=builder /app/apps/web/.next/static ./apps/web/.next/static
+
 EXPOSE 3000
 
-WORKDIR /app/apps/web
-
-
-CMD ["pnpm", "start"]
+CMD HOSTNAME="0.0.0.0" node apps/web/server.js
